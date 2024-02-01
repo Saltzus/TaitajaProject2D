@@ -4,17 +4,17 @@ public class Swing : MonoBehaviour
 {
     public int damageAmount = 10; // Adjust this value as needed
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision detected");
-
         // Check if the collision is with an enemy (you might need to adjust the tag)
-        if (other.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player")) return;
+        if (collision.gameObject.CompareTag("Enemy"))
         {
+            
             Debug.Log("Collision with Enemy detected");
 
             // Apply damage to the enemy
-            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+            EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
 
             if (enemyHealth != null)
             {
