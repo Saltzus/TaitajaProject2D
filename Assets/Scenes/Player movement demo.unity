@@ -314,10 +314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 1036078003}
   handpivot: {fileID: 441018630}
-  smooth: 5
-  slash: {fileID: 0}
-  slashpf: {fileID: 172940676548441617, guid: 7b0d176fd53bbc842bcdc9089564ebf3, type: 3}
-  bulletSpeed: 0
+  spawnPoint: {fileID: 0}
+  chargeTime: 2
 --- !u!1 &441018630
 GameObject:
   m_ObjectHideFlags: 0
