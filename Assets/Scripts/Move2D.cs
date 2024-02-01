@@ -35,8 +35,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (isPlatformer)
         {
-            speed = speed * Time.deltaTime;
-
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
             if (Input.GetButtonDown("Jump") && canJump)

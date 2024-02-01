@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Swing : MonoBehaviour
+public class swing : MonoBehaviour
 {
     public int damageAmount = 10; // Adjust this value as needed
 

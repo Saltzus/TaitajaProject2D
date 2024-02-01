@@ -10,9 +10,21 @@ public class Hand : MonoBehaviour
     public int swingspeed = 30;
     public float cooldownTime = 1.0f;
     public GameObject sword1;
+    public GameObject sword2;
+    public GameObject Swords;
 
     private float cooldownTimer = 0.0f;
     private GameObject swing;
+
+    private void Start()
+    {
+        // Ensure sword1 is not null before setting its parent and position
+        if (sword1 != null)
+        {
+            sword1.transform.parent = hand.transform;
+            sword1.transform.position = hand.transform.position;
+        }
+    }
 
     void Update()
     {
@@ -34,7 +46,37 @@ public class Hand : MonoBehaviour
         // Adjust sword rotation based on handpivot rotation
         if (handpivot.transform.rotation.eulerAngles.z < 0)
         {
-            sword1.transform.rotation = Quaternion.Euler(0, -180, 0);
+            // Ensure sword1 is not null before adjusting its rotation
+            if (sword1 != null)
+            {
+                sword1.transform.rotation = Quaternion.Euler(0, -180, 0);
+            }
+        }
+    }
+
+    public void Equippowerup(int num)
+    {
+        switch (num)
+        {
+            case 0:
+                // Ensure sword1 is not null before changing its parent and position
+                if (sword1 != null)
+                {
+                    sword1.transform.parent = Swords.transform;
+                    sword1.transform.position = Swords.transform.position;
+                    sword2.transform.parent = hand.transform;
+                    sword2.transform.position = hand.transform.position;
+
+                    swing.GetComponent<swing>().damageAmount += 5;
+
+                }
+                return;
+            case 1:
+                gameObject.GetComponent<PlayerMovement>().speed += 3.0f;
+                return;
+            case 2:
+                swing.GetComponent<swing>().damageAmount += 5;
+                return;
         }
     }
 
