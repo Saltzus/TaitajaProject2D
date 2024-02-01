@@ -7,7 +7,7 @@ public class Hand : MonoBehaviour
     public Transform spawnPoint;
     public GameObject swingPre;
     public float chargeTime = 2.0f;
-    public int swingspeed = 10;
+    public int swingspeed = 30;
     public float cooldownTime = 1.0f;
 
     private bool isCharging = false;
@@ -63,7 +63,7 @@ public class Hand : MonoBehaviour
             swingrb.AddForce(swing.transform.right * swingspeed, ForceMode2D.Impulse);
 
             // Add a component to destroy the swing after 3 seconds
-            Destroy(swing, 3f);
+            Destroy(swing, 1f);
 
             isCharging = false;
         }
