@@ -17,11 +17,11 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            Die1();
         }
     }
 
-    void Die()
+    void Die1()
     {
         // Add any death-related logic here (e.g., play death animation, destroy the enemy GameObject)
         Destroy(gameObject);
