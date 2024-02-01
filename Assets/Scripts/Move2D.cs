@@ -8,11 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public bool isPlatformer = false;
 
     private Rigidbody2D rb;
+    private Animation anim;
     private bool canJump = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animation>();
     }
 
     void Update()
@@ -23,6 +25,13 @@ public class PlayerMovement : MonoBehaviour
         if (isTopDown)
         {
             rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+
+            if (horizontal != 0f || vertical != 0f)
+            {
+                Debug.Log(horizontal);
+                anim.Play("PlayerAnimation");
+            }
+            
         }
         else if (isPlatformer)
         {
@@ -33,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 canJump = false;
             }
+
+
+
         }
         else
         {

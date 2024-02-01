@@ -26,7 +26,6 @@ public class EnemyMovement : MonoBehaviour
         var step = speed * Time.deltaTime;
 
         float distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
-        Debug.Log(distance);
         if (distance < 6)
         {
             anim.Play("EnemyAnimation");
