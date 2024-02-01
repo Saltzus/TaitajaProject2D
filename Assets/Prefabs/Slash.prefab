@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  swingmesh: {fileID: 2409156677964930423}
 --- !u!1 &2409156677964930423
 GameObject:
   m_ObjectHideFlags: 0

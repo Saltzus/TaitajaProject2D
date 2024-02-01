@@ -5,6 +5,7 @@ using UnityEngine;
 public class Swing : MonoBehaviour
 {
     public int damage;
+    public GameObject swingmesh;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +22,9 @@ public class Swing : MonoBehaviour
     // OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider
     void OnCollisionEnter(Collision collision)
     {
-        
-        
-            
+
+
+             Destroy(swingmesh);
             Destroy(gameObject);
         
     }
