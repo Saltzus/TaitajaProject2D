@@ -315,7 +315,10 @@ MonoBehaviour:
   hand: {fileID: 1036078003}
   handpivot: {fileID: 441018630}
   spawnPoint: {fileID: 0}
+  swingPre: {fileID: 172940676548441617, guid: 7b0d176fd53bbc842bcdc9089564ebf3, type: 3}
   chargeTime: 2
+  swingspeed: 10
+  cooldownTime: 1
 --- !u!1 &441018630
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +753,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.032513916, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -761,7 +764,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.0650278, y: 2}
   m_EdgeRadius: 0
 --- !u!212 &1555399960
 SpriteRenderer:

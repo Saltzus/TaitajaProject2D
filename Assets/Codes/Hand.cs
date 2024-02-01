@@ -5,19 +5,29 @@ public class Hand : MonoBehaviour
     public GameObject hand;
     public GameObject handpivot;
     public Transform spawnPoint;
+    public GameObject swingPre;
     public float chargeTime = 2.0f;
+    public int swingspeed = 10;
+    public float cooldownTime = 1.0f;
 
     private bool isCharging = false;
     private float chargeTimer = 0.0f;
+    private float cooldownTimer = 0.0f;
+    private GameObject swing; // Variable to store the instantiated swing
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+
+        if (Input.GetMouseButtonDown(0) && cooldownTimer <= 0)
         {
             StartCharge();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetMouseButtonUp(0))
         {
             ReleaseAttack();
         }
@@ -40,14 +50,21 @@ public class Hand : MonoBehaviour
     {
         isCharging = true;
         chargeTimer = 0.0f;
+        cooldownTimer = cooldownTime;
     }
 
     void ReleaseAttack()
     {
         if (isCharging)
         {
+            swing = Instantiate(swingPre, hand.transform.position, hand.transform.rotation);
+            Rigidbody2D swingrb = swing.GetComponent<Rigidbody2D>();
 
-            GameObject Hand = Instantiate(hand, spawnPoint.position, spawnPoint.rotation);
+            swingrb.AddForce(swing.transform.right * swingspeed, ForceMode2D.Impulse);
+
+            // Add a component to destroy the swing after 3 seconds
+            Destroy(swing, 3f);
+
             isCharging = false;
         }
     }
@@ -68,4 +85,13 @@ public class Hand : MonoBehaviour
         handpivot.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collision is with the object you want to destroy the swing on
+        if (collision.gameObject.CompareTag("YourTag")) // Replace "YourTag" with the actual tag of the object
+        {
+            // Destroy the swing
+            Destroy(swing.gameObject);
+        }
+    }
 }
