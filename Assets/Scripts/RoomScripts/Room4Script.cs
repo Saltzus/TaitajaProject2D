@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Room2Script : MonoBehaviour
+public class Room4Script : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Door;
 
     bool once = true;
 
-    private GameObject DoorLeft;
-    private GameObject DoorRight;
+    private GameObject DoorOwn;
     private bool enemies = true;
 
     bool isCurrentlyColliding = false;
@@ -21,7 +19,6 @@ public class Room2Script : MonoBehaviour
         
         if (collision.gameObject.name == "Player")
         {
-
             isCurrentlyColliding = true;
         }
     }
@@ -33,10 +30,7 @@ public class Room2Script : MonoBehaviour
     void Start()
     {
         //Close doors
-        DoorLeft  = GameObject.Find("DoorLeft");
-        DoorRight = GameObject.Find("DoorRight");
-
-        Door.SetActive(false);
+        DoorOwn = GameObject.Find("Door4");
     }
 
     // Update is called once per frame
@@ -49,20 +43,19 @@ public class Room2Script : MonoBehaviour
 
         if (isCurrentlyColliding && enemies)
         {
-            DoorLeft.SetActive(true);
-            DoorRight.SetActive(true);
+            DoorOwn.SetActive(true);
             Door.SetActive(true);
+
+            Debug.Log("DOOR4");
         }
         if (!enemies && once)
         {
-            DoorLeft.SetActive(false);
-            DoorRight.SetActive(false);
+            DoorOwn.SetActive(false);
             Door.SetActive(false);
 
             once = false;
         }
 
-        
 
     }
 }
