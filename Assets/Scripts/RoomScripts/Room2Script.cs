@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Room2Script : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Door;
-
-    bool once = true;
 
     private GameObject DoorLeft;
     private GameObject DoorRight;
@@ -42,27 +39,16 @@ public class Room2Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.Find("Enemies").childCount == 0)
-        {
-            enemies = false;
-        }
-
         if (isCurrentlyColliding && enemies)
         {
+
+
             DoorLeft.SetActive(true);
             DoorRight.SetActive(true);
             Door.SetActive(true);
         }
-        if (!enemies && once)
-        {
-            DoorLeft.SetActive(false);
-            DoorRight.SetActive(false);
-            Door.SetActive(false);
 
-            once = false;
-        }
 
-        
 
     }
 }
